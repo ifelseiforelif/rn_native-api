@@ -1,15 +1,24 @@
 {
   "expo": {
-    "name": "rn_api",
-    "slug": "rn_api",
+    "name": "Можливості смартфона",
+    "slug": "phone-capabilities-lab",
+    "scheme": "phone-capabilities-lab",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
     "userInterfaceStyle": "light",
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "infoPlist": {
+        "NSCameraUsageDescription": "Камера використовується для навчальної демонстрації створення фото.",
+        "NSLocationWhenInUseUsageDescription": "Місцезнаходження потрібне лише для демонстрації GPS на екрані застосунку.",
+        "NSContactsUsageDescription": "Контакти використовуються для навчальної демонстрації читання імені та номера."
+      }
     },
     "android": {
+      "blockedPermissions": [
+        "android.permission.WRITE_CONTACTS"
+      ],
       "adaptiveIcon": {
         "backgroundColor": "#E6F4FE",
         "foregroundImage": "./assets/android-icon-foreground.png",
@@ -18,6 +27,28 @@
       },
       "predictiveBackGestureEnabled": false
     },
+    "plugins": [
+      [
+        "expo-camera",
+        {
+          "cameraPermission": "Дозволити доступ до камери для створення навчального фото.",
+          "recordAudioAndroid": false
+        }
+      ],
+      [
+        "expo-location",
+        {
+          "locationWhenInUsePermission": "Дозволити доступ до місцезнаходження для демонстрації GPS."
+        }
+      ],
+      [
+        "expo-contacts",
+        {
+          "contactsPermission": "Дозволити доступ до контактів для навчального прикладу."
+        }
+      ],
+      "expo-router"
+    ],
     "web": {
       "favicon": "./assets/favicon.png"
     }
